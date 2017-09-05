@@ -1,17 +1,133 @@
 const express = require('express');
 const router = express.Router();
-const knex = require('../db/knex')
+const query = require('../db/query');
+const knex = require('../db/knex');
 
-router.get('/:table', (req, res, next) => {
-    knex(req.params.table)
+router.get('/officestaffs', (req, res, next) => {
+    knex('officestaff')
       .then((data) => {
         res.json({
-          [req.params.table] : data
+          officestaff : data
         })
       })
       .catch((err) => {
         res.json({
-          'errors': err
+          errors: {
+            msg: "Something went wrong"
+          }
+        })
+      })
+})
+
+router.get('/sundayschoolstaffs', (req, res, next) => {
+    knex('sundayschoolstaff')
+      .then((data) => {
+        res.json({
+          sundayschoolstaff : data
+        })
+      })
+      .catch((err) => {
+        res.json({
+          errors: {
+            msg: "Something went wrong"
+          }
+        })
+      })
+})
+
+router.get('/elders', (req, res, next) => {
+    knex('elders')
+      .then((data) => {
+        res.json({
+          elders : data
+        })
+      })
+      .catch((err) => {
+        res.json({
+          errors: {
+            msg: "Something went wrong"
+          }
+        })
+      })
+})
+
+router.get('/deacons', (req, res, next) => {
+    knex('deacons')
+      .then((data) => {
+        res.json({
+          deacon : data
+        })
+      })
+      .catch((err) => {
+        res.json({
+          errors: {
+            msg: "Something went wrong"
+          }
+        })
+      })
+})
+
+
+router.get('/worshipschedules', (req, res, next) => {
+    knex('worshipscehdule')
+      .then((data) => {
+        res.json({
+          worshipschedules : data
+        })
+      })
+      .catch((err) => {
+        res.json({
+          errors: {
+            msg: "Something went wrong"
+          }
+        })
+      })
+})
+
+router.get('/ministries', (req, res, next) => {
+    knex('ministries')
+      .then((data) => {
+        res.json({
+          ministries : data
+        })
+      })
+      .catch((err) => {
+        res.json({
+          errors: {
+            msg: "Something went wrong"
+          }
+        })
+      })
+})
+
+router.get('/goodnewsarchives', (req, res, next) => {
+    knex('goodnewsarchive')
+      .then((data) => {
+        res.json({
+          goodnewsarchives : data
+        })
+      })
+      .catch((err) => {
+        res.json({
+          errors: {
+            msg: "Something went wrong"
+          }
+        })
+      })
+})
+
+router.get('/communityoutreaches', (req, res, next) => {
+    knex('communityoutreach')
+      .then((data) => {
+        res.json({
+          communityoutreaches : data
+        })
+      })
+      .catch((err) => {
+        res.json({
+          errors: {
+            msg: "Something went wrong"
+          }
         })
       })
 })
@@ -31,7 +147,10 @@ router.post('/:table', (req, res, next) => {
       })
       .then((data)=> {
         res.json({
-          [req.params.table] : data
+          [req.params.table] : data,
+          "errors": {
+            "msg": "Something went wrong"
+          }
         })
       })
       .catch((err) => {
@@ -58,7 +177,10 @@ router.put('/:table/:id', (req, res, next) => {
       })
       .then((data)=> {
         res.json({
-          [req.params.table] : data
+          [req.params.table] : data,
+          "errors": {
+            "msg": "Something went wrong"
+          }
         })
       })
       .catch((err) => {
@@ -78,7 +200,10 @@ router.delete('/:table/:id', (req, res, next) => {
     })
     .then((data)=> {
       res.json({
-        [req.params.table] : data
+        [req.params.table] : data,
+        "errors": {
+          "msg": "Something went wrong"
+        }
       })
     })
     .catch((err) => {
