@@ -1,9 +1,9 @@
 
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
-  return knex.raw('truncate sunday_school_staff restart identity cascade')
+  return knex.raw('truncate sundayschoolstaff restart identity cascade')
     .then(function(){
-      return knex('sunday_school_staff').insert([
+      return knex('sundayschoolstaff').insert([
         {
           name: 'Cindy Timerson',
           role: 'Superintendent'

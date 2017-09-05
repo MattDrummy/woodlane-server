@@ -6,7 +6,7 @@ router.get('/:table', (req, res, next) => {
     knex(req.params.table)
       .then((data) => {
         res.json({
-          req.params.table: data
+          [req.params.table] : data
         })
       })
       .catch((err) => {
@@ -31,7 +31,7 @@ router.post('/:table', (req, res, next) => {
       })
       .then((data)=> {
         res.json({
-          req.params.table: data
+          [req.params.table] : data
         })
       })
       .catch((err) => {
@@ -58,7 +58,7 @@ router.put('/:table/:id', (req, res, next) => {
       })
       .then((data)=> {
         res.json({
-          req.params.table: data
+          [req.params.table] : data
         })
       })
       .catch((err) => {
@@ -78,7 +78,7 @@ router.delete('/:table/:id', (req, res, next) => {
     })
     .then((data)=> {
       res.json({
-        req.params.table: data
+        [req.params.table] : data
       })
     })
     .catch((err) => {

@@ -1,9 +1,9 @@
 
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
-  return knex.raw('truncate weekly_scriptures restart identity cascade')
+  return knex.raw('truncate weeklyscriptures restart identity cascade')
     .then(function(){
-      return knex('weekly_scriptures').insert([
+      return knex('weeklyscriptures').insert([
         {
           verse: 'Psalm 99'
         },

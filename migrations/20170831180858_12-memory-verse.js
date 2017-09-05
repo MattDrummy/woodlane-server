@@ -1,6 +1,6 @@
 
 exports.up = function(knex, Promise) {
-  return knex.schema.createTable('memory_verse', (table) => {
+  return knex.schema.createTable('memoryverse', (table) => {
     table.increments();
     table.text('message').notNullable();
     table.text('verse').notNullable();
@@ -9,6 +9,6 @@ exports.up = function(knex, Promise) {
 };
 
 exports.down = function(knex, Promise) {
-  return knex.schema.dropTableIfExists('memory_verse');
+  return knex.schema.dropTableIfExists('memoryverse');
 
 };

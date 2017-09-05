@@ -1,9 +1,9 @@
 
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
-  return knex.raw('truncate memory_verse restart identity cascade')
+  return knex.raw('truncate memoryverse restart identity cascade')
     .then(function(){
-      return knex('memory_verse').insert([
+      return knex('memoryverse').insert([
         {
           message: 'Pursue peace with everyone, and the holiness without which no one will see the Lord.',
           verse: 'Hebrews 12:14 (NRSV)',

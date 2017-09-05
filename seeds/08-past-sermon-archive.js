@@ -1,9 +1,9 @@
 
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
-  return knex.raw('truncate past_sermon_archive restart identity cascade')
+  return knex.raw('truncate pastsermonarchive restart identity cascade')
     .then(function(){
-      return knex('past_sermon_archive').insert([
+      return knex('pastsermonarchive').insert([
         {
           title: 'Promise Keeper',
           title_link: 'https://www.dropbox.com/s/quazf37qa4s0ow5/sermon%20-%2006-04-17.mp3?dl=0',

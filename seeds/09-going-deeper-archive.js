@@ -1,9 +1,9 @@
 
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
-  return knex.raw('truncate going_deeper restart identity cascade')
+  return knex.raw('truncate goingdeeper restart identity cascade')
     .then(function(){
-      return knex('going_deeper').insert([
+      return knex('goingdeeper').insert([
         {
           question: 'Why are Christians called to be holy?'
         },

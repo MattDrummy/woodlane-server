@@ -1,9 +1,9 @@
 
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
-  return knex.raw('truncate community_outreach restart identity cascade')
+  return knex.raw('truncate communityoutreach restart identity cascade')
     .then(function(){
-      return knex('community_outreach').insert([
+      return knex('communityoutreach').insert([
         {
           name: 'Camp Fowler'
         },

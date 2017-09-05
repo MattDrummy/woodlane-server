@@ -1,9 +1,9 @@
 
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
-  return knex.raw('truncate worship_scehdule restart identity cascade')
+  return knex.raw('truncate worshipscehdule restart identity cascade')
     .then(function(){
-      return knex('worship_scehdule').insert([
+      return knex('worshipscehdule').insert([
         {
           date: 'July 16',
           title: 'Remembering Your First Love',

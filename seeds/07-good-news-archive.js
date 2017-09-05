@@ -1,9 +1,9 @@
 
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
-  return knex.raw('truncate good_news_archive restart identity cascade')
+  return knex.raw('truncate goodnewsarchive restart identity cascade')
     .then(function(){
-      return knex('good_news_archive').insert([
+      return knex('goodnewsarchive').insert([
         {
           title: 'August 2017',
           link: 'https://www.dropbox.com/s/2o0jjagwib0feq5/July2017GOODNEWSpdf.pdf?dl=0'

@@ -1,6 +1,6 @@
 
 exports.up = function(knex, Promise) {
-  return knex.schema.createTable('good_news_archive', (table) => {
+  return knex.schema.createTable('goodnewsarchive', (table) => {
     table.increments();
     table.text('title').notNullable();
     table.text('link').notNullable();
@@ -8,6 +8,6 @@ exports.up = function(knex, Promise) {
 };
 
 exports.down = function(knex, Promise) {
-  return knex.schema.dropTableIfExists('good_news_archive');
+  return knex.schema.dropTableIfExists('goodnewsarchive');
 
 };
