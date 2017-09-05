@@ -5,10 +5,14 @@ const knex = require('../db/knex')
 router.get('/:table', (req, res, next) => {
     knex(req.params.table)
       .then((data) => {
-        res.json(data)
+        res.json({
+          req.params.table: data
+        })
       })
       .catch((err) => {
-        res.json(err)
+        res.json({
+          'errors': err
+        })
       })
 })
 
@@ -26,10 +30,14 @@ router.post('/:table', (req, res, next) => {
         return knex(req.params.table)
       })
       .then((data)=> {
-        res.json(data)
+        res.json({
+          req.params.table: data
+        })
       })
       .catch((err) => {
-        res.json(err)
+        res.json({
+          'errors': err
+        })
       })
   }
 })
@@ -49,10 +57,14 @@ router.put('/:table/:id', (req, res, next) => {
         return knex(req.params.table)
       })
       .then((data)=> {
-        res.json(data)
+        res.json({
+          req.params.table: data
+        })
       })
       .catch((err) => {
-        res.json(err)
+        res.json({
+          'errors': err
+        })
       })
   }
 })
@@ -65,10 +77,14 @@ router.delete('/:table/:id', (req, res, next) => {
       return knex(req.params.table)
     })
     .then((data)=> {
-      res.json(data)
+      res.json({
+        req.params.table: data
+      })
     })
     .catch((err) => {
-      res.json(err)
+      res.json({
+        'errors': err
+      })
     })
 })
 
