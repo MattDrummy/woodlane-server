@@ -4,54 +4,19 @@ const query = require('../db/query');
 const knex = require('../db/knex');
 
 router.get('/officestaffs', (req, res, next) => {
-    knex('officestaff')
-      .then((data) => {
-        res.json({
-          officestaff : data
-        })
-      })
-      .catch((err) => {
-        res.json({
-          errors: {
-            msg: "Something went wrong"
-          }
-        })
-      })
+  getAll(req, res, 'officestaff', 'officestaff')
 })
 
 router.get('/sundayschoolstaffs', (req, res, next) => {
-    knex('sundayschoolstaff')
-      .then((data) => {
-        res.json({
-          sundayschoolstaff : data
-        })
-      })
-      .catch((err) => {
-        res.json({
-          errors: {
-            msg: "Something went wrong"
-          }
-        })
-      })
+  getAll(req, res, 'sundayschoolstaff', 'sundayschoolstaff')
 })
 
 router.get('/elders', (req, res, next) => {
-    knex('elders')
-      .then((data) => {
-        res.json({
-          elders : data
-        })
-      })
-      .catch((err) => {
-        res.json({
-          errors: {
-            msg: "Something went wrong"
-          }
-        })
-      })
+  getAll(req, res, 'elders', 'elders')
 })
 
 router.get('/deacons', (req, res, next) => {
+  getAll(req, res, )
     knex('deacons')
       .then((data) => {
         res.json({
@@ -131,6 +96,87 @@ router.get('/communityoutreaches', (req, res, next) => {
         })
       })
 })
+
+router.get('/pastsermonarchives', (req, res, next) => {
+    knex('pastsermonarchive')
+      .then((data) => {
+        res.json({
+          pastsermonarchive : data
+        })
+      })
+      .catch((err) => {
+        res.json({
+          errors: {
+            msg: "Something went wrong"
+          }
+        })
+      })
+})
+
+router.get('/goingdeepers', (req, res, next) => {
+    knex('goingdeeper')
+      .then((data) => {
+        res.json({
+          goingdeeper : data
+        })
+      })
+      .catch((err) => {
+        res.json({
+          errors: {
+            msg: "Something went wrong"
+          }
+        })
+      })
+})
+
+router.get('/resources', (req, res, next) => {
+    knex('resources')
+      .then((data) => {
+        res.json({
+          resource : data
+        })
+      })
+      .catch((err) => {
+        res.json({
+          errors: {
+            msg: "Something went wrong"
+          }
+        })
+      })
+})
+
+router.get('/memoryverses', (req, res, next) => {
+    knex('memoryverse')
+      .then((data) => {
+        res.json({
+          memoryverse : data
+        })
+      })
+      .catch((err) => {
+        res.json({
+          errors: {
+            msg: "Something went wrong"
+          }
+        })
+      })
+})
+
+router.get('/weeklyscriptures', (req, res, next) => {
+    knex('weeklyscriptures')
+      .then((data) => {
+        res.json({
+          weeklyscripture : data
+        })
+      })
+      .catch((err) => {
+        res.json({
+          errors: {
+            msg: "Something went wrong"
+          }
+        })
+      })
+})
+
 
 router.post('/:table', (req, res, next) => {
   if (JSON.stringify(req.body) == JSON.stringify({})) {
@@ -213,4 +259,19 @@ router.delete('/:table/:id', (req, res, next) => {
     })
 })
 
+function getAll(req, res, table, model){
+  knex(table)
+    .then((data) => {
+      res.json({
+        model : data
+      })
+    })
+    .catch((err) => {
+      res.json({
+        errors: {
+          msg: "Something went wrong"
+        }
+      })
+    })
+}
 module.exports = router;
