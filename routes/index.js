@@ -21,9 +21,8 @@ router.get('/deacons', (req, res, next) => {
   getAll(req, res, 'deacons', 'deacon')
 })
 
-
 router.get('/worshipschedules', (req, res, next) => {
-  getAll(req, res, 'worshipschedule', 'worshipschedule')
+  getAll(req, res, 'worshipscehdule', 'worshipschedule')
 })
 
 router.get('/ministries', (req, res, next) => {
@@ -83,7 +82,6 @@ router.post('/deacons', (req, res, next) => {
   postOne(req, res, 'deacons', 'deacon')
 })
 
-
 router.post('/worshipschedules', (req, res, next) => {
   postOne(req, res, 'worshipschedule', 'worshipschedules')
 })
@@ -127,6 +125,7 @@ router.post('/currentsermons', (req, res, next) => {
 router.post('/sermonparagraphs', (req, res, next) => {
   postOne(req, res, 'sermonparagraph', 'sermonparagraph')
 })
+
 // all put routes
 
 router.put('/officestaffs/:id', (req, res, next) => {
@@ -188,6 +187,7 @@ router.put('/currentsermons/:id', (req, res, next) => {
 router.put('/sermonparagraphs/:id', (req, res, next) => {
   updateOne(req, res, 'sermonparagraph', 'sermonparagraph')
 })
+
 // all delete routes
 
 router.delete('/officestaffs/:id', (req, res, next) => {
@@ -259,9 +259,9 @@ function getAll(req, res, table, model){
     })
     .catch((err) => {
       res.json({
-        errors: {
+        errors: [{
           msg: "Something went wrong"
-        }
+        }]
       })
     })
 }
@@ -286,7 +286,9 @@ function postOne(req, res, table, model){
       })
       .catch((err) => {
         res.json({
-          'errors': err
+          errors: [{
+            msg: "Something went wrong"
+          }]
         })
       })
   }
@@ -308,15 +310,14 @@ function updateOne(req, res, table, model) {
       })
       .then((data)=> {
         res.json({
-          [model] : data,
-          "errors": {
-            "msg": "Something went wrong"
-          }
+          [model] : data
         })
       })
       .catch((err) => {
         res.json({
-          'errors': err
+          errors: [{
+            msg: "Something went wrong"
+          }]
         })
       })
   }
@@ -331,15 +332,14 @@ function deleteOne(req, res, table, model){
     })
     .then((data)=> {
       res.json({
-        [model] : data,
-        "errors": {
-          "msg": "Something went wrong"
-        }
+        [model] : data
       })
     })
     .catch((err) => {
       res.json({
-        'errors': err
+        errors: [{
+          msg: "Something went wrong"
+        }]
       })
     })
 }
