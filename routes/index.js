@@ -1,9 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const query = require('../db/query');
 const knex = require('../db/knex');
 
-// all get routes
+// all get all routes
 
 router.get('/officestaffs', (req, res, next) => {
   getAll(req, res, 'officestaff', 'officestaff')
@@ -64,6 +63,70 @@ router.get('/currentsermons', (req, res, next) => {
 router.get('/sermonparagraphs', (req, res, next) => {
   getAll(req, res, 'sermonparagraph', 'sermonparagraph')
 })
+
+// all get single routes
+
+router.get('/officestaffs/:id', (req, res, next) => {
+  getRecord(req, res, 'officestaff', 'officestaff')
+})
+
+router.get('/sundayschoolstaffs/:id', (req, res, next) => {
+  getRecord(req, res, 'sundayschoolstaff', 'sundayschoolstaff')
+})
+
+router.get('/elders/:id', (req, res, next) => {
+  getRecord(req, res, 'elders', 'elders')
+})
+
+router.get('/deacons/:id', (req, res, next) => {
+  getRecord(req, res, 'deacons', 'deacon')
+})
+
+router.get('/worshipschedules/:id', (req, res, next) => {
+  getRecord(req, res, 'worshipscehdule', 'worshipschedule')
+})
+
+router.get('/ministries/:id', (req, res, next) => {
+  getRecord(req, res, 'ministries', 'ministries')
+})
+
+router.get('/goodnewsarchives/:id', (req, res, next) => {
+  getRecord(req, res, 'goodnewsarchive', 'goodnewsarchives')
+})
+
+router.get('/communityoutreaches/:id', (req, res, next) => {
+  getRecord(req, res, 'communityoutreach', 'communityoutreaches')
+})
+
+router.get('/pastsermonarchives/:id', (req, res, next) => {
+  getRecord(req, res, 'pastsermonarchive', 'pastsermonarchive')
+})
+
+router.get('/goingdeepers/:id', (req, res, next) => {
+  getRecord(req, res, 'goingdeeper', 'goingdeeper')
+})
+
+router.get('/resources/:id', (req, res, next) => {
+  getRecord(req, res, 'resources', 'resource')
+})
+
+router.get('/memoryverses/:id', (req, res, next) => {
+  getRecord(req, res, 'memoryverse', 'memoryverse')
+})
+
+router.get('/weeklyscriptures/:id', (req, res, next) => {
+  getRecord(req, res, 'weeklyscriptures', 'weeklyscripture')
+})
+
+router.get('/currentsermons/:id', (req, res, next) => {
+  getRecord(req, res, 'currentsermon', 'currentsermon')
+})
+
+router.get('/sermonparagraphs/:id', (req, res, next) => {
+  getRecord(req, res, 'sermonparagraph', 'sermonparagraph')
+})
+
+
 // all post routes
 
 router.post('/officestaffs', (req, res, next) => {
@@ -331,6 +394,23 @@ function deleteOne(req, res, table, model){
       return knex(table)
     })
     .then((data)=> {
+      res.json({
+        [model] : data
+      })
+    })
+    .catch((err) => {
+      res.json({
+        errors: [{
+          msg: "Something went wrong"
+        }]
+      })
+    })
+}
+
+function getRecord(req, res, table, model, id){
+  knex(table)
+    .where('id', req.params.id)
+    .then((data) => {
       res.json({
         [model] : data
       })

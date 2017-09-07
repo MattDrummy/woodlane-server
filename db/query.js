@@ -4,6 +4,9 @@ module.exports = {
   getTable: (table) => {
     return knex(table);
   },
+  getRecord: (table, id) => {
+    return knex(table).where('id', id);
+  }
   postToTable: (table, data) => {
     return knex(table).insert(data).returning('*');
   },
