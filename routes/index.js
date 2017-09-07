@@ -330,7 +330,7 @@ function getAll(req, res, table, model){
 }
 
 function postOne(req, res, table, model){
-  if (Obj.keys(req.body).length < 1) {
+  if (Object.keys(req.body).length < 1) {
     res.json({
       message: 'Sorry, you did not include a proper post',
       body: req.body
@@ -358,7 +358,7 @@ function postOne(req, res, table, model){
 }
 
 function updateOne(req, res, table, model) {
-  if (Obj.keys(req.body).length === 0) {
+  if (Object.keys(req.body).length === 0) {
     res.json({
       message: 'Sorry, you did not include a proper update',
       body: req.body
